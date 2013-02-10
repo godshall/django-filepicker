@@ -41,3 +41,17 @@ class FPFileField(models.FileField):
 
         defaults.update(kwargs)
         return super(FPFileField, self).formfield(**defaults)
+
+from south.modelsinspector import add_introspection_rules
+add_introspection_rules([
+    (
+        [FPFileField], # Class(es) these apply to
+        [], # Positional arguments (not used)
+        {   # Keyword argument
+            "apikey": ["apikey", {"default": None}],
+            "mimetypes": ["mimetypes", {"default": None}],
+            "services": ["services", {"default": None}],
+            "additional_params": ["additional_params", {"default": None}],
+        },
+    ),
+], ["^django_filepicker\.models\.FPFileField"])
